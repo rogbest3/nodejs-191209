@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<select name="" id="nation">
+		<option value="">번호를 선택하세요</option>
+		<option value="0">No.0</option>
+		<option value="1">No.1</option>
+		<option value="2">No.2</option>
+		<option value="3">No.3</option>
+	</select>
+	<ul>
+		<li>대한민국</li>
+		<li>미국</li>
+		<li>중국</li>
+		<li>베트</li>
+	</ul>	
+	<script>
+	window.onload =()=>{	//	실행완료 후 코드 제거되게 하기 위해 사용
+		// var는 화면 닫아도 사라지지 않음
+		const $nation = document.getElementById('nation')
+		const $li = document.getElementsByTagName('li')	// tagName은 리턴타입이 배열
+
+		$nation.onchange =function(){
+			$li[0].style.backgroundColor = ''
+			$li[1].style.backgroundColor = ''
+			$li[2].style.backgroundColor = ''
+			$li[3].style.backgroundColor = ''
+			$li[this.value].style.backgroundColor = 'yellow'
+		}
+	}
+	
+	</script>
+
+</body>
+</html>
