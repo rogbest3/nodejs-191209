@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+window.onload = function(){
+	const temp =  `<form id = "form_join" class="form-signin">
+		    <img class="mb-4" src="" alt="" width="72" height="72">
+		    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		    <label for="inputEmail" class="sr-only">USER ID</label>
+		    <input type="text" id="uid" value="01ph63" class="form-control" placeholder="Email address" required="" autofocus="">
+			<br>
+			<label for="inputPassword" class="sr-only">PASSWORD</label>
+		    <input type="password" id="pwd" value="1" class="form-control" placeholder="Password" required="">
+			<br>
+			<input type="button" id="btn" value="로그인">
+		    
+			<div class="checkbox mb-3">
+		      <label>
+		      <a id = "a_go_join" href="#">회원가입</a>
+		      </label>
+		      <label>
+		      <a id = "a_go_admin" href="#">관리자모드</a>
+		      </label>
+		    </div>
+		    <div id="btn_login"></div>
+		    <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+		  </form>`
+	const $box = document.getElementById('box')
+	$box.innerHTML = temp
+
+	function Member(){
+		let _id, _pwd
+
+		this.setId  =x=>{ _id = x }
+		this.setPwd =x=>{ _pwd = x }
+		this.getId  =()=>{ return _id }
+		this.getPwd =()=>{ return _pwd }
+	}
+	
+	const member = new Member()
+	const $uid = document.getElementById('uid')
+	const $pwd = document.getElementById('pwd')
+	const $btn = document.getElementById('btn')
+
+	// 옵저버 패턴			      프로퍼티  	   메서드
+	$btn.addEventListener('click', function(){
+
+		member.setId($uid.value)
+		member.setPwd($pwd.value)
+
+		alert(`id : ${member.getId()}, pwd : ${member.getPwd()}`)
+		location.href = 'login_success.html'
+	})
+	
+}
+</script>
+</body>
+</html>
