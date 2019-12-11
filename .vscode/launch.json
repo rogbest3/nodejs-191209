@@ -35,6 +35,22 @@
       "port": 9257,
       "webRoot": "${workspaceFolder}",
       "url": "http://127.0.0.1:49503/p/moneyhub-nodejs/object.html?_cmAuth\u003dkftcdjrgej"
+    },
+    {
+      "name": "Launch Chrome 127.0.0.1 (4)",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9287,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:49503/p/moneyhub-nodejs/animal.html?_cmAuth\u003dkftcdjrgej"
+    },
+    {
+      "name": "Launch Chrome 127.0.0.1 (5)",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9204,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:49503/p/moneyhub-nodejs/VendingMachine.html?_cmAuth\u003dkftcdjrgej"
     }
   ]
 }
