@@ -22,30 +22,76 @@
 <script>
 window.onload = function(){
 	
+/* 생성자 함수 사용 시
 	const inputText = new Factory('inputText')
 	const inputButton = new Factory('inputButton')
 	const br = new Factory('br')
 	const $box = document.getElementById('box')
+
+	$box.innerHTML = ''
+	$box.appendChild(inputText.make('val', 'text'))
+	$box.appendChild(br.make())
+	$box.appendChild(inputButton.make('btn', 'button', '동전투입'))
+ */
 
 /* 	$box.remove()
 	const div = new Factory('div')
 	document.body.appendChild(div.make('box'))
 	const $box = document.getElementById('box')
  */
+	const $box = document.getElementById('box')
 	$box.innerHTML = ''
-	$box.appendChild(inputText.make('val', 'text'))
-	$box.appendChild(br.make())
-	$box.appendChild(inputButton.make('btn', 'button', '동전투입'))
+	$box.appendChild(compo.inputText('val', 'text'))
+	$box.appendChild(compo.br())
+	$box.appendChild(compo.inputButton('btn', 'button', '동전투입'))
 	
-	const $btn = document.getElementById('btn')
 
-	$btn.addEventListener('click', function(){
-		const $val = document.getElementById('val') // 클릭했을 때 읽어야함
+	document
+	.getElementById('btn')
+	.addEventListener('click', function(){
 	//	alert(`${$val.value}`)
-		const vms = new VendingMachineService()
-		vms.insertCoin($val.value)
+		service.insertCoin(document.getElementById('val').value)
 		
 		$box.innerHTML = ''
+
+		$box.appendChild(compo.div('coke'))
+		document
+		.getElementById('coke')
+		.textContent = '1. 콜라 - 700원'
+
+		$box.appendChild(compo.div('cider'))
+		document
+		.getElementById('cider')
+		.textContent = '2. 사이다 - 800원'
+
+		$box.appendChild(compo.div('juice'))
+		document
+		.getElementById('juice')
+		.textContent = '3. 쥬스 - 1000원'
+
+		box.appendChild(compo.br())
+
+		box.appendChild(compo.inputText('menu','text'))
+		box.appendChild(compo.br())
+		box.appendChild(compo.inputText('quantity', 'text'))
+				box.appendChild(compo.br())
+		box.appendChild(compo.inputButton('btn','button','메뉴선택'))
+
+
+		$box.appendChild(compo.div('coin'))
+		service.vendingMachine()
+		const vm = new VendingMachine()
+		document
+		.getElementById('coin')
+		.textContent = `투입된 금액 : ${vm.getChange()}원`
+
+		document
+		.getElementById('btn')
+		.addEventListener('click', function(){
+			service.selectItem(document.getElementById('menu').value,
+								document.getElementById('quantity').value )
+		})
+		/* 	생성자 함수 사용 시
 		const div = new Factory('div')
 		
 		$box.appendChild(div.make('coke'))
@@ -77,6 +123,8 @@ window.onload = function(){
 
 		const $menu = document.getElementById('menu')
 		const $btn = document.getElementById('btn')
+ */
+
 	//	const util = new Looping()
 
 		// alert(util.forTest([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
