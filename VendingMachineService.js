@@ -33,7 +33,6 @@ function VendingMachineService(){
 	this.handleOrder = function( quantity, price, itemName ){
 
 	}
-	
 }
 
 //	_change, _itemNo, _itemNoList, _itemList
