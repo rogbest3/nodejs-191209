@@ -5,7 +5,7 @@ const compo = {
 	div(id){
 		const div = document.createElement('div')
 		div.setAttribute('id', id)
-		div.setAttribute('style', 'border : 1px solid black')
+		div.setAttribute('style', 'border : 1px solid black; width : 310px')
 	//	div.textContent = text
 		return div
 	}, 
@@ -24,6 +24,12 @@ const compo = {
 	},
 	br(){
 		return document.createElement('br')
+	},
+	span(val){
+		const span = document.createElement('span')
+		span.textContent = `${val}`
+		span.setAttribute('style', `display : inline-block; width : 120px`)
+		return span
 	}
 }
 // 공유하는 프로퍼티가 없기 때문에 객체 리터러로 사용 -> 위에 코드로 사용, 사용시 new 필요 없이 사용가능

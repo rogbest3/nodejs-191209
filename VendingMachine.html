@@ -69,15 +69,16 @@ window.onload = function(){
 		.getElementById('juice')
 		.textContent = '3. 쥬스 - 1000원'
 
-		box.appendChild(compo.br())
-
-		box.appendChild(compo.inputText('menu','text'))
-		box.appendChild(compo.br())
-		box.appendChild(compo.inputText('quantity', 'text'))
-				box.appendChild(compo.br())
-		box.appendChild(compo.inputButton('btn','button','메뉴선택'))
-
-
+		$box.appendChild(compo.br())
+		$box.appendChild(compo.span('메뉴  번호 입력 : '))
+		$box.appendChild(compo.inputText('menu','text'))
+		$box.appendChild(compo.br())
+		$box.appendChild(compo.span('수량 입력         : '))
+		$box.appendChild(compo.inputText('quantity', 'text'))
+		$box.appendChild(compo.br())
+		$box.appendChild(compo.inputButton('btn','button','메뉴선택'))
+		$box.appendChild(compo.br())
+		$box.appendChild(compo.br())
 		$box.appendChild(compo.div('coin'))
 		service.vendingMachine()
 		const vm = new VendingMachine()
@@ -88,8 +89,15 @@ window.onload = function(){
 		document
 		.getElementById('btn')
 		.addEventListener('click', function(){
-			service.selectItem(document.getElementById('menu').value,
-								document.getElementById('quantity').value )
+			let menuNo = document.getElementById('menu').value
+			let quantity = document.getElementById('quantity').value
+	
+			$box.innerHTML = ''
+			$box.appendChild(compo.div('return'))
+			
+			document
+			.getElementById('return')
+			.textContent = service.selectItem(menuNo, quantity)
 		})
 		/* 	생성자 함수 사용 시
 		const div = new Factory('div')
