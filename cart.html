@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<!-- 스프링과 사용할땐 밑에 코드 사용 못함 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
+
+</head>
+<body>
+<div id="app">
+	<ul>
+		<li v-for="item of items" :key="item.name">
+			{{item.name}} : {{item.price}}원
+			<input type="text" v-model="item.qty">개
+		</li>
+	</ul>
+	<button @click="buy">구매</button>	
+	<!-- <button v-on:click="buy">구매</button>	 v-on 약어 => @ 	-->
+	<p>합계 : {{totalPrice}}원</p>
+</div>
+<script>
+const items = [
+	{ name : '연필', price : 300, qty : 0 },
+	{ name : '공책', price : 400, qty : 0 },
+	{ name : '지우개', price : 500, qty : 0 }
+]
+const app = new Vue({
+	el : '#app',
+	data : {
+		items	//	이름이 같으면 생략가
+	//	items : items
+	}, 
+	methods : {
+		buy(){
+			alert(`구매버튼 클릭`)
+		}
+	},
+	computed : {
+		totalPrice(){	// 양방향 바인딩
+			return this.items.reduce((sum, item)=>{
+				return sum + (item.price * item.qty)
+			}, 0)	// 0 - 결과 초기값 -> sum = 0 이됨
+		}			// [ 0, 300, 400, 500 ] => 합계 : 1200
+	}, 
+	created(){	// 메서드 프로퍼트, 시작하자 마자 실행
+		alert(`객체 생성`)
+	}
+/* 	created : function(){
+		alert(`객체 생성`)
+	} */
+
+})
+</script>
+</body>
+</html>
